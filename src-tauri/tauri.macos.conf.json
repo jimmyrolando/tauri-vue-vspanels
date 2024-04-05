@@ -1,0 +1,13 @@
+{
+  "app": {
+    "windows": [
+      {
+        "hiddenTitle": true,
+        "titleBarStyle": "Overlay",
+        "decorations": true,
+        "fullscreen": false,
+        "resizable": true
+      }
+    ]
+  }
+}
