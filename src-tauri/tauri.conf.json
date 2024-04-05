@@ -1,7 +1,7 @@
 {
   "productName": "vscode-like-panels",
   "version": "0.0.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "xyz.jimmyrolando.tauri",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1421",
