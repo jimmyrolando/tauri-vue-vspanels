@@ -6,7 +6,7 @@ import navigation from './nav.vue'
 <template>
     <VSCode>
         <template #main>
-                <navigation msg="Vscode-like dinamic Layout" />
+                <navigation msg="Vscode-like Layout with 3 dynamic panels" />
         </template>
     </VSCode>
 </template>

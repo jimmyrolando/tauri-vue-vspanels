@@ -6,7 +6,7 @@ import navigation from './nav.vue'
 <template>
     <Layout4>
         <template #right>
-            <navigation style="margin-top: 30px;" msg="simple two panels layout" />
+            <navigation style="margin-top: 30px;" msg="Simple Layout with 2 static panels" />
         </template>
     </Layout4>
 </template>

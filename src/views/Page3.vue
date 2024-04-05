@@ -12,7 +12,7 @@ import navigation from './nav.vue'
             </div>
         </template>
         <template #panelup>
-            <navigation msg="simple two panels layout" />
+            <navigation msg="Simple Layout with 2 dynamic panels" />
         </template>
     </Layout3>
 </template>
