@@ -1,4 +1,5 @@
-import { ref, onMounted, onUnmounted, toValue, Ref, computed } from 'vue'
+import { ref, toValue, Ref, computed } from 'vue'
+import { useEventListener } from './event'
 
 export interface UsePanelOptions {
     iniSize: number,
@@ -6,7 +7,7 @@ export interface UsePanelOptions {
     maxSize: number,
     axis?: 'x' | 'y',
     reverse?: Boolean,
-    autoHidden?: Boolean 
+    autoHidden?: Boolean
 }
 
 export function usePanel(target: any, options: UsePanelOptions) {
@@ -20,15 +21,11 @@ export function usePanel(target: any, options: UsePanelOptions) {
     } = options
 
     let startValue = toValue(iniSize)
-
     const rawSize = ref(toValue(iniSize))
-
     const newSize = ref(toValue(iniSize))
-
     const pressedDelta: Ref<undefined | number> = ref()
-
     const hover = ref(false)
-
+    
     const enter = () => {
         hover.value = true
     }
@@ -79,23 +76,11 @@ export function usePanel(target: any, options: UsePanelOptions) {
         startValue = newSize.value
     }
 
-    onMounted(() => {
-        toValue(target)!.addEventListener('pointerdown', start)
-        toValue(target)!.addEventListener('pointerenter', enter)
-        toValue(target)!.addEventListener('pointerleave', leave)
-        window.addEventListener('pointermove', move)
-        window.addEventListener('pointerup', end)
-        console.log('mounted')
-    })
-
-    onUnmounted(() => {
-        // toValue(target)!.removeEventListener('pointerdown', start)
-        // toValue(target)!.removeEventListener('pointerenter', enter)
-        // toValue(target)!.removeEventListener('pointerleave', leave)
-        window.removeEventListener('pointermove', move)
-        window.removeEventListener('pointerup', end)
-        console.log('unmounted')
-    })
+    useEventListener(target, 'pointerdown', start)
+    useEventListener(target, 'pointerenter', enter)
+    useEventListener(target, 'pointerleave', leave)
+    useEventListener(window, 'pointermove', move)
+    useEventListener(window, 'pointerup', end)
 
     const isDragging = computed(() => !!pressedDelta.value)
 
